@@ -13,17 +13,16 @@ driver.get("https://app.emenu.ae/en/accounts/login/?next=/en/")
 time.sleep(2)
 
 # signing in
-email_field = driver.find_element(By.NAME, "login").send_keys("beitbeiruty@emenu.ae")
-password_field = driver.find_element(By.NAME, "password").send_keys("welcome2024")
+email_field = driver.find_element(By.NAME, "login").send_keys("alfarah-auh@emenu.ae")
+password_field = driver.find_element(By.NAME, "password").send_keys("welcome2023")
 driver.find_element(By.NAME, "submit").click()
-time.sleep(1)
-
 
 # clciking on edit pen link
-# driver.find_element(By.XPATH,'/html/body/div/div[2]/div/div/div/div/div[3]/div/div[2]/h4').click()
-# time.sleep(1)
-# driver.find_element(By.XPATH,'/html/body/div/div[2]/div/div/div/div/div[3]/div/div[2]/div[1]/a/i').click()
-# time.sleep(2)
+driver.find_element(By.XPATH,'/html/body/div[1]/div[2]/div/div/div/div/div[2]/div/div[2]/h4').click()
+time.sleep(1)
+driver.find_element(By.XPATH,'/html/body/div[1]/div[2]/div/div/div/div/div[2]/div/div[2]/div[1]/a/i').click()
+time.sleep(2)
+
 
 # products drop down
 driver.find_element(By.XPATH, '/html/body/div/div[1]/div[2]/ul/li[6]/a').click()
@@ -44,7 +43,7 @@ while index < last_element:
     food = name_from_csv[index]
     food_price = price_from_csv[index]
     food_c = category_from_csv[index]
-    # food_d = str(desc_from_csv[index])
+    # food_d = desc_from_csv[index]
 
 
     # # Creating a new product
@@ -62,45 +61,40 @@ while index < last_element:
 
     # Description column
     ##start here
-    #small des
-    #uncomment from here 66-86
     # driver.find_element(By.XPATH,
     #                     '/html/body/div[1]/div[2]/div/div/div/form/div/div/div[1]/div[2]/div[2]/textarea').click()
-    #
+    # time.sleep(1)
     # if food_d == "nannan" or food_d == "nan" or food_d == "":
     #     driver.find_element(By.TAG_NAME, 'textarea').send_keys("  ")
     # else:
     #     driver.find_element(By.TAG_NAME, 'textarea').send_keys(food_d)
-    # # time.sleep(1)
-    # #big d
-    # # driver.find_element(By.TAG_NAME, 'textarea').send_keys(food_d)
-    # # time.sleep(1)
+    # driver.find_element(By.TAG_NAME, 'textarea').send_keys(food_d)
+    # time.sleep(3)
     #
     # # this is to middle intend
-    # time.sleep(2)
     # middle_indent = driver.find_element(By.XPATH,
     #                                     '/html/body/div[1]/div[2]/div/div/div/form/div/div/div[1]/div[2]/div[3]/div/div/div/span[1]/span[2]/span[5]/span[3]/a[8]/span[1]').click()
-    # # time.sleep(1)
-    # ActionChains(driver).send_keys(food_d).perform()
     # time.sleep(1)
-    # ##end here
+    # ActionChains(driver).send_keys(food_d).perform()
+    # time.sleep(2)
+    ##end here
 
     # clicking on price then sending keys
     driver.find_element(By.XPATH,
                         '/html/body/div[1]/div[2]/div/div/div/form/div/div/div[1]/div[2]/div[4]/div[2]/div/div/input[1]').click()
-    time.sleep(1)
+    # time.sleep(2)
     price_from_site = driver.find_element(By.NAME, "price_0").send_keys(food_price)
     driver.execute_script('scrollBy(0,50)')
 
     # this is  to locate the category field
     driver.find_element(By.XPATH,
                         '/html/body/div[1]/div[2]/div/div/div/form/div/div/div[1]/div[2]/div[4]/div[1]/div/div/button/div[1]/div/div').click()
-    # time.sleep(10)
+    # time.sleep(1)
     # this is to search in the category field
     driver.find_element(By.XPATH,
                         '/html/body/div[1]/div[2]/div/div/div/form/div/div/div[1]/div[2]/div[4]/div[1]/div/div/div/div[2]/input').send_keys(
         food_c)
-    # time.sleep(10)
+    # time.sleep(1)
     driver.find_element(By.XPATH,
                         '/html/body/div[1]/div[2]/div/div/div/form/div/div/div[1]/div[2]/div[4]/div[1]/div/div/div/div[3]/ul/li[1]/a').click()
     driver.execute_script('scrollBy(0,500)')
@@ -108,4 +102,4 @@ while index < last_element:
     submit = driver.find_element(By.NAME, 'submit').click()
     print(f"{food} has been added")
     index += 1
-    time.sleep(2)
+    time.sleep(1)

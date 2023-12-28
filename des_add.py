@@ -32,14 +32,14 @@ time.sleep(3)
 
 index = 0
 name_from_csv = readCsv.get_names()
-desc_from_csv = readCsv.get_des()
+price_from_csv = readCsv.get_prices()
 
 last_element = len(name_from_csv)
 
 while index < last_element:
     food = name_from_csv[index]
 
-    food_d = desc_from_csv[index]
+    food_d = price_from_csv[index]
     # print(food,food_d ,index)
 
     # # search and find the product
@@ -68,24 +68,12 @@ while index < last_element:
         time.sleep(1)
 
     else:
-        # Close the WebDriver
-        # Description column
-        ##start here
-        driver.find_element(By.XPATH,
-                            '/html/body/div[1]/div[2]/div/div/div/form/div/div/div[1]/div[2]/div[2]/textarea').click()
-        time.sleep(1)
-        driver.find_element(By.TAG_NAME, 'textarea').send_keys(food_d)
-        time.sleep(3)
 
-        # this is to middle intend
-        middle_indent = driver.find_element(By.XPATH,
-                                            '/html/body/div[1]/div[2]/div/div/div/form/div/div/div[1]/div[2]/div[3]/div/div/div/span[1]/span[2]/span[5]/span[3]/a[8]/span[1]').click()
-        time.sleep(1)
-        ActionChains(driver).send_keys(food_d).perform()
-        time.sleep(2)
         ##end here
 
         # clicking on price then sending keys
+        driver.find_element(By.NAME,'price_0').clear()
+        driver.find_element(By.NAME,'price_0').send_keys(food_d)
 
         # driver.find_element(By.XPATH,
         #                     '/html/body/div[1]/div[2]/div/div/div/form/div/div/div[1]/div[2]/div[4]/div[1]/div/div/div/div[3]/ul/li[1]/a').click()
